@@ -6,11 +6,11 @@ import {
     DELETE_STREAM,
     EDIT_STREAM} from '../actions/types'
 
-
-
-export default (state = {}, action) => {
+ const streamReducer = (state = {}, action) => {
     switch (action.type){
-        case CREATE_STREAM, EDIT_STREAM, FETCH_STREAM:
+        case CREATE_STREAM:
+        case EDIT_STREAM:
+        case FETCH_STREAM:
             return {...state, [action.payload.id]: action.payload};
         case FETCH_STREAMS:
             return {...state, ..._.mapKeys(action.payload, 'id')}
@@ -20,3 +20,5 @@ export default (state = {}, action) => {
             return state
     }
 }
+
+export default streamReducer;
